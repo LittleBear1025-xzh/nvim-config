@@ -35,5 +35,7 @@ require('Comment').setup({
   }
 })
 
+require("renamer").setup()
+
 -- require'indent_blankline'
 

@@ -10,9 +10,10 @@ autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 augroup end
 ]])
 
-return require('packer').startup(function(use)
+return require('packer').startup({ function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
   -- LSP
   use {
     'neovim/nvim-lspconfig',
@@ -20,6 +21,7 @@ return require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'ray-x/lsp_signature.nvim',
   }
+
   -- 补全
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -32,9 +34,17 @@ return require('packer').startup(function(use)
   -- For vsnip users
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  -- copilot
+  -- use 'github/copilot.vim'
+  -- 括号补全
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {
+        map_c_h = true,
+        map_c_w = true,
+        check_ts = true,
+      }
+    end
   }
   -- 语法高亮
   use {
@@ -45,12 +55,23 @@ return require('packer').startup(function(use)
     end,
   }
 
-
   -- 浮动命令行
   use {
     "akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
     end
+  }
+
+  -- 浮动code action
+  use { 'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
+
+  -- 浮动rename
+  use {
+    'filipdutescu/renamer.nvim',
+    branch = 'master',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   -- 文件树
@@ -142,4 +163,15 @@ return require('packer').startup(function(use)
     end
   })
   --use 'nvim-colorizer'
-end)
+end,
+  config = {
+    git = {
+      default_url_format = 'https://hub.nuaa.cf/%s'
+    },
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = "single" })
+      end
+    },
+  },
+})

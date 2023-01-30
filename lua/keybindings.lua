@@ -13,9 +13,10 @@ map('n', '<C-h>', 'gT', opt)
 map('n', '<C-l>', 'gt', opt)
 map('n', '<A-h>', '<Cmd>bp<CR>', opt)
 map('n', '<A-l>', '<Cmd>bn<CR>', opt)
-map('n', '<leader>bd', '<Cmd>w<CR><Cmd>bd<CR>', opt)
+map('n', '<leader>bd', '<Cmd>bd<CR>', opt)
 map('n', 'g<leader>', '2g;', opt)
--- map('n', '<leader>q', '<Cmd>wq<CR>', opt)
+map('n', '<C-s>', '<Cmd>w<CR>', opt)
+map('n', '<leader>q', '<Cmd>q<CR>', opt)
 -- 注释在init.lua 中
 
 -- nvim-tree
@@ -30,13 +31,16 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- 模糊搜索当前buffer内容
 vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
 
+--浮动rename
+map('', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opt)
+
 -- 浮动终端
 map('n', '<leader>t', '<Cmd>ToggleTerm direction=float<CR>', opt)
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('n', '<esc>', [[iexit<CR>]], opts)
+  vim.keymap.set('n', '<esc>', [[i<C-c><CR>exit<CR>]], opts)
   vim.keymap.set('t', '<A-h>', [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set('t', '<A-j>', [[<Cmd>wincmd j<CR>]], opts)
   vim.keymap.set('t', '<A-k>', [[<Cmd>wincmd k<CR>]], opts)
