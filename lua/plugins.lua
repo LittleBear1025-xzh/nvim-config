@@ -108,9 +108,11 @@ return require('packer').startup({ function(use)
 
   -- Theme
   use { 'navarasu/onedark.nvim',
-    require('onedark').setup {
-      style = 'cool',
-    }
+    config = function()
+      require('onedark').setup {
+        style = 'cool',
+      }
+    end
   }
 
   -- 缩进线
