@@ -15,12 +15,12 @@ require 'nvim-tree'.setup({
       close = true
     }
   },
-  view = {
+  --[[ view = {
     float = {
       enable = true,
 
     }
-  },
+  }, ]]
   diagnostics = {
     enable = true,
     show_on_dirs = true
