@@ -46,6 +46,7 @@ return require('packer').startup({ function(use)
       }
     end
   }
+
   -- 语法高亮
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -99,13 +100,12 @@ return require('packer').startup({ function(use)
   -- 首页
   use {
     'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      --[[ local alpha = require'alpha'
-      local dashboard = require'alpha.themes.dashboard'
-      dashboard.section.header.val = { } ]]
-      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
     end
   }
+
   -- Theme
   use { 'navarasu/onedark.nvim',
     require('onedark').setup {
@@ -118,7 +118,7 @@ return require('packer').startup({ function(use)
     config = function()
       require("indent_blankline").setup {
         -- for example, context is off by default, use this to turn it on
-        space_char_blankline = " ",
+        -- space_char_blankline = " ",
         show_current_context = true,
         show_current_context_start = true,
       }
@@ -162,8 +162,12 @@ return require('packer').startup({ function(use)
       })
     end
   })
-  --use 'nvim-colorizer'
+
+  -- markdown预览
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }) --use 'nvim-colorizer'
 end,
+
   config = {
     git = {
       default_url_format = 'https://hub.nuaa.cf/%s'
