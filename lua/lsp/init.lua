@@ -1,15 +1,15 @@
 require('mason').setup({
   github = {
-    download_url_template = "https://hub.nuaa.cf/%s/releases/download/%s/%s",
+    download_url_template = "https://github.com/%s/releases/download/%s/%s",
   },
 })
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "pyright", "sumneko_lua", "clangd", "eslint", "tsserver", "marksman", "html" },
+  -- automatic_installation = true
+}
+
 require "lsp_signature".setup({
-  toggle_key = '<C-k>',
-  bind = true, -- This is mandatory, otherwise border config won't get registered.
-  handler_opts = {
-    border = "rounded"
-  }
+  hi_parameter = "IncSearch",
 })
 
 local opts = { noremap = true, silent = true }
@@ -21,10 +21,13 @@ vim.keymap.set('n', '<space>dl', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
-
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- Enable lsp_signature
+  require "lsp_signature".on_attach({
+    toggle_key = '<C-k>',
+  }, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -41,7 +44,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', '<cmd>CodeActionMenu<CR>', bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>=', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
@@ -50,7 +53,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require('lspconfig')
 
-require("mason-lspconfig").setup_handlers {
+require("mason-lspconfig").setup_handlers({
   function(server_name) -- default handler (optional)
     lspconfig[server_name].setup {
       on_attach = on_attach,
@@ -82,4 +85,4 @@ require("mason-lspconfig").setup_handlers {
       },
     }
   end,
-}
+})

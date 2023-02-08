@@ -8,6 +8,7 @@ map('', 'J', '5j', opt)
 map('', 'K', '5k', opt)
 map('', 'H', '^', opt)
 map('', 'L', '$', opt)
+map('i', '<C-h', '<BS>', opt)
 map('n', '<C-j>', 'J', opt)
 map('n', '<C-h>', 'gT', opt)
 map('n', '<C-l>', 'gt', opt)
@@ -15,25 +16,18 @@ map('n', '<A-h>', '<Cmd>bp<CR>', opt)
 map('n', '<A-l>', '<Cmd>bn<CR>', opt)
 map('n', '<leader>bd', '<Cmd>bd<CR>', opt)
 map('n', 'g<leader>', '2g;', opt)
-map('n', '<C-s>', '<Cmd>w<CR>', opt)
+map('', '<C-s>', '<Cmd>w<CR>', opt)
+map('i', '<C-s>', '<Cmd>w<CR>', opt)
 map('n', '<leader>q', '<Cmd>q<CR>', opt)
 -- 注释在init.lua 中
 
 -- nvim-tree
 map('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', opt)
 
--- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
--- vim.keymap.set('n', '<C-k>', builtin., {})
--- 模糊搜索当前buffer内容
-vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+-- telescope映射键位在lua/plugin-config/telescope中
 
 --浮动rename
-map('', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opt)
+map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opt)
 
 -- 浮动终端
 map('n', '<leader>t', '<Cmd>ToggleTerm direction=float<CR>', opt)
