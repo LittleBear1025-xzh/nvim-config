@@ -3,7 +3,7 @@ vim.cmd([[
     if has('termguicolors')
       set termguicolors
     endif
-    " set background=light
+    set background=dark
 
     let g:everforest_background = 'medium'
     let g:everforest_better_performance = 1

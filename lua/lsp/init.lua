@@ -4,7 +4,7 @@ require('mason').setup({
   },
 })
 require("mason-lspconfig").setup {
-  ensure_installed = { "pyright", "sumneko_lua", "clangd", "eslint", "tsserver", "marksman", "html" },
+  ensure_installed = { "pyright", "lua_ls", "clangd", "eslint", "tsserver", "marksman", "html" },
   -- automatic_installation = true
 }
 
@@ -60,8 +60,8 @@ require("mason-lspconfig").setup_handlers({
       capabilities = capabilities
     }
   end,
-  ['sumneko_lua'] = function()
-    lspconfig.sumneko_lua.setup {
+  ['lua_ls'] = function()
+    lspconfig.lua_ls.setup {
       on_attach = on_attach,
       settings = {
         Lua = {
