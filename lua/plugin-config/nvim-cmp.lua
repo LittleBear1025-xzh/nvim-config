@@ -43,9 +43,9 @@ cmp.setup({
   snippet = {
     expand = function(args)
       -- For `vsnip` users.
-      -- vim.fn["vsnip#anonymous"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
       -- For `luasnip` users.
-      require("luasnip").lsp_expand(args.body)
+      -- require("luasnip").lsp_expand(args.body)
     end,
   },
   window = {
@@ -132,7 +132,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
+    { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'buffer' },
@@ -166,3 +166,10 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- -- Set up lspconfig.
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+--   capabilities = capabilities
+-- }

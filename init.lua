@@ -133,12 +133,16 @@ else
       },
       {
           'lukas-reineke/indent-blankline.nvim',
-          opts = {
-              -- for example, context is off by default, use this to turn it on
-              -- space_char_blankline = " ",
-              show_current_context = true,
-              show_current_context_start = true,
-          }
+          main ={ibl},
+          -- opts = {
+          --     -- for example, context is off by default, use this to turn it on
+          --     -- space_char_blankline = " ",
+          --     show_current_context = true,
+          --     show_current_context_start = true,
+          -- }
+          config = function()
+            require 'ibl'.setup()
+          end,
       },
       {
           'nvim-lualine/lualine.nvim',

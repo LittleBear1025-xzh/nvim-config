@@ -4,8 +4,8 @@ require('mason').setup({
   },
 })
 require("mason-lspconfig").setup {
-  ensure_installed = { "pyright", "lua_ls", "clangd", "eslint", "tsserver", "marksman", "html" },
-  -- automatic_installation = true
+  ensure_installed = {"lua_ls", "clangd"},
+  automatic_installation = true
 }
 
 require "lsp_signature".setup({
