@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 require 'nvim-tree'.setup({
     hijack_netrw = true,
-    sync_root_with_cwd = true,
+    sync_root_with_cwd = false,
     update_focused_file = {
         enable = true,
         update_root = true,
