@@ -65,6 +65,7 @@ else
       end,
       build = "make install_jsregexp",
     },
+    -- 括号补全
     {
       "windwp/nvim-autopairs",
       config = function()
@@ -75,12 +76,20 @@ else
         }
       end
     },
+    -- 彩虹括号
+    {
+      'HiPhish/rainbow-delimiters.nvim',
+      config = function()
+        require('plugin-config/rainbow')
+      end
+    },
     {
       'nvim-treesitter/nvim-treesitter',
       dependencies = {
         'windwp/nvim-ts-autotag',
-        'mrjones2014/nvim-ts-rainbow',
         'nvim-treesitter/nvim-treesitter-textobjects',
+        -- %匹配
+        'andymass/vim-matchup',
       },
       -- build = ':TSUpdate',
       config = function()
@@ -189,7 +198,6 @@ else
     {
       'equalsraf/neovim-gui-shim',
     },
-    -- 寄存器插件
   }, {
     default = {
       lazy = true
