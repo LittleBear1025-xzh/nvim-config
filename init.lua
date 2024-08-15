@@ -88,6 +88,7 @@ else
       dependencies = {
         'windwp/nvim-ts-autotag',
         'nvim-treesitter/nvim-treesitter-textobjects',
+        'nvim-treesitter/nvim-treesitter-context',
         -- %匹配
         'andymass/vim-matchup',
       },
@@ -150,7 +151,7 @@ else
       --     show_current_context_start = true,
       -- }
       config = function()
-        require 'ibl'.setup()
+        require('plugin-config/indent-blankline')
       end,
     },
     {

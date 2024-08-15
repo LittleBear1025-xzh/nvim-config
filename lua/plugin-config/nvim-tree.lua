@@ -4,7 +4,7 @@ local function open_nvim_tree(data)
   local real_file = vim.fn.filereadable(data.file) == 1
   if real_file then
     require("nvim-tree.api").tree.toggle({
-        focus = false,
+      focus = false,
     })
   end
 end
@@ -12,26 +12,27 @@ end
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 require 'nvim-tree'.setup({
-    hijack_netrw = true,
-    sync_root_with_cwd = false,
-    update_focused_file = {
-        enable = true,
-        update_root = true,
-    },
-    tab = {
-        sync = {
-            open = true,
-            close = true
-        }
-    },
-    --[[ view = {
+  hijack_netrw = true,
+  -- sync_root_with_cwd = false,
+  prefer_startup_root = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+  },
+  tab = {
+    sync = {
+      open = true,
+      close = true
+    }
+  },
+  --[[ view = {
     float = {
       enable = true,
 
     }
   }, ]]
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true
-    }
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true
+  }
 })

@@ -114,6 +114,9 @@ require 'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true
   },
+  context = {
+    enable = true
+  },
   -- %匹配
   matchup = {
     enable = true,
