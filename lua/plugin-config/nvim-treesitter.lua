@@ -21,7 +21,7 @@ vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = t
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the four listed parsers should always be installed)
-  ensure_installed = { "c", "python", "lua", "vim", "help", "typescript", "tsx", "cpp" },
+  ensure_installed = { "c", "python", "vim", "lua", "typescript", "tsx", "cpp" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,

@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opt = { noremap = true, silent = true }
 
 map('', 'J', '5j', opt)
@@ -20,6 +20,11 @@ map('', '<C-s>', '<Cmd>w<CR>', opt)
 map('i', '<C-s>', '<Cmd>w<CR>', opt)
 map('n', '<leader>q', '<Cmd>q<CR>', opt)
 -- 注释在init.lua 中
+
+--lspsaga
+map('n', 'gh', '<cmd>Lspsaga hover_doc<CR>', opt)
+map('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', opt)
+map('n', 'gD', '<cmd>Lspsaga peek_type_definition<CR>', opt)
 
 -- nvim-tree
 map('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', opt)

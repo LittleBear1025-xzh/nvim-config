@@ -1,6 +1,9 @@
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
+-- 设置vim显示颜色为256色，让颜色好看一些
+-- set t_Co=256
+vim.o.t_Co = 256
 -- jk移动时光标下上方保留8行
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5

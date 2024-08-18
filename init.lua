@@ -65,6 +65,17 @@ else
       end,
       build = "make install_jsregexp",
     },
+    -- lsp界面美化
+    {
+      'nvimdev/lspsaga.nvim',
+      config = function()
+        require('lspsaga').setup({})
+      end,
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons',     -- optional
+      }
+    },
     -- 括号补全
     {
       "windwp/nvim-autopairs",
