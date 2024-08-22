@@ -59,6 +59,8 @@ else
         'rafamadriz/friendly-snippets',
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
       },
       config = function()
         require('plugin-config/nvim-cmp')

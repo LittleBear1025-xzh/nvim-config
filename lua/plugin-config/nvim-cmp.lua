@@ -1,38 +1,40 @@
 local icons = {
   Array = "",
   Boolean = "蘒",
-  Class = "",
-  Color = "",
+  Class = "󰠱",
+  Color = "󰏘",
   Constant = "",
-  Constructor = "",
+  Constructor = "",
   Enum = "",
   EnumMember = "",
   Event = "",
   Field = "",
-  File = "",
-  Folder = "",
-  Function = "",
+  File = "󰈙",
+  Folder = "󰉋",
+  Function = "󰊕",
   Interface = "",
   Key = "",
-  Keyword = "",
-  Method = "",
-  Module = "",
+  Keyword = "󰌋",
+  Method = "󰆧",
+  Module = "󰆧",
   Namespace = "",
-  Null = "ﳠ",
+  Null = "",
   Number = "",
   Object = "",
-  Operator = "",
+  Operator = "󰆕",
   Package = "",
-  Property = "",
+  Property = "󰜢",
   Reference = "",
-  Snippet = "",
+  Snippet = "",
   String = "",
   Struct = "",
-  Text = "",
-  TypeParameter = "",
+  Text = "",
+  TypeParameter = "󰅲",
   Unit = "",
-  Value = "",
+  Value = "󰎠",
   Variable = "",
+  Cmd = "",
+
 }
 
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -43,9 +45,9 @@ cmp.setup({
   snippet = {
     expand = function(args)
       -- For `vsnip` users.
-      -- vim.fn["vsnip#anonymous"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
       -- For `luasnip` users.
-      require("luasnip").lsp_expand(args.body)
+      -- require("luasnip").lsp_expand(args.body)
     end,
   },
   window = {
@@ -55,6 +57,7 @@ cmp.setup({
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind:lower())
+
       vim_item.menu = ({
         nvim_lsp = "(LSP)",
         emoji = "(Emoji)",
@@ -133,11 +136,16 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
-    { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'buffer' },
     { name = 'path' }
-  })
+  }),
+  experimental = {
+    ghost_text = {
+      hl_group = "CmpGhostText",
+    },
+  },
 })
 
 -- Set configuration for specific filetype.
