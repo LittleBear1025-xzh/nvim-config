@@ -4,8 +4,8 @@ require('mason').setup({
   },
 })
 require("mason-lspconfig").setup {
-  ensure_installed = {"lua_ls", "clangd"},
-  automatic_installation = true
+  ensure_installed = {"lua_ls", "clangd", "marksman"},
+  automatic_installation = true,
 }
 
 require "lsp_signature".setup({

@@ -61,6 +61,8 @@ else
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
+        'SirVer/ultisnips',
+        'quangnguyen30192/cmp-nvim-ultisnips',
       },
       config = function()
         require('plugin-config/nvim-cmp')
@@ -183,6 +185,17 @@ else
       config = function()
         require("plugin-config/neoscroll")
       end
+    },
+    -- -- 重构
+    {
+      'ThePrimeagen/refactoring.nvim',
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      config = function()
+        require("refactoring").setup()
+      end,
     },
     -- 注释
     {
