@@ -88,6 +88,7 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-j>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     -- for lua
     -- ['<CR>'] = cmp.mapping(function(fallback)
@@ -135,10 +136,6 @@ cmp.setup({
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        local entry = cmp.get_selected_entry()
-        if not entry then
-          cmp.select_next_item()
-        end
         cmp.confirm({ select = true })
       elseif vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
