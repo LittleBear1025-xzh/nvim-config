@@ -4,10 +4,10 @@ vim.g.maplocalleader = " "
 local map = vim.keymap.set
 local opt = { noremap = true, silent = true }
 
-map('', 'J', '5j', opt)
-map('', 'K', '5k', opt)
-map('', 'H', '^', opt)
-map('', 'L', '$', opt)
+map({ 'n' , 'x', 'o'}, 'J', '5j', opt)
+map({ 'n' , 'x', 'o'}, 'K', '5k', opt)
+map({ 'n' , 'x', 'o'}, 'H', '^', opt)
+map({ 'n' , 'x', 'o'}, 'L', '$', opt)
 map('i', '<C-h', '<BS>', opt)
 map('n', '<C-j>', 'J', opt)
 map('n', '<C-h>', 'gT', opt)
