@@ -4,10 +4,10 @@ vim.g.maplocalleader = " "
 local map = vim.keymap.set
 local opt = { noremap = true, silent = true }
 
-map({ 'n' , 'x', 'o'}, 'J', '5j', opt)
-map({ 'n' , 'x', 'o'}, 'K', '5k', opt)
-map({ 'n' , 'x', 'o'}, 'H', '^', opt)
-map({ 'n' , 'x', 'o'}, 'L', '$', opt)
+map({ 'n', 'x', 'o' }, 'J', '5j', opt)
+map({ 'n', 'x', 'o' }, 'K', '5k', opt)
+map({ 'n', 'x', 'o' }, 'H', '^', opt)
+map({ 'n', 'x', 'o' }, 'L', '$', opt)
 map('i', '<C-h', '<BS>', opt)
 map('n', '<C-j>', 'J', opt)
 map('n', '<C-h>', 'gT', opt)
@@ -20,6 +20,12 @@ map('', '<C-s>', '<Cmd>w<CR>', opt)
 map('i', '<C-s>', '<Cmd>w<CR>', opt)
 map('n', '<leader>q', '<Cmd>q<CR>', opt)
 -- 注释在init.lua 中
+
+--refactoring
+map("x", "<leader>ef", function() require('refactoring').refactor('Extract Function') end)
+map("x", "<leader>ev", function() require('refactoring').refactor('Extract Variable') end)
+map({ "n", "x" }, "<leader>rr",
+  function() require('telescope').extensions.refactoring.refactors() end)
 
 --lspsaga
 map('n', 'gh', '<cmd>Lspsaga hover_doc<CR>', opt)
